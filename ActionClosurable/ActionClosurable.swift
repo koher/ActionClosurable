@@ -31,7 +31,7 @@ private func register<T>(_ actor: Actor<T>, to object: AnyObject) {
 }
 
 public protocol ActionClosurable {}
-public extension ActionClosurable where Self: AnyObject {
+extension ActionClosurable where Self: AnyObject {
     public func convert(closure: @escaping (Self) -> Void, toConfiguration configure: (AnyObject, Selector) -> Void) {
         let actor = Actor(acts: closure)
         configure(actor, #selector(Actor<AnyObject>.act(sender:)))
